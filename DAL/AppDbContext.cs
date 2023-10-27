@@ -22,6 +22,10 @@ namespace EduHome.DAL
 
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Bio> Bios { get; set; }
 
 
 

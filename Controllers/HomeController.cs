@@ -2,6 +2,7 @@
 using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace EduHome.Controllers
@@ -15,26 +16,17 @@ namespace EduHome.Controllers
             _appDbContext = db;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             HomeVM vm = new HomeVM
             {
-                Sliders=_appDbContext.Sliders.ToList(),
-                Teachers=_appDbContext.Teachers.ToList(),
+                Sliders= await _appDbContext.Sliders.ToListAsync(),
+                Teachers= await _appDbContext.Teachers.ToListAsync(),
+                Abouts= await _appDbContext.Abouts.FirstOrDefaultAsync(),
             };
             
             return View(vm);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

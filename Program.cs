@@ -1,5 +1,5 @@
 using EduHome.DAL;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;    
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,8 +28,16 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    
+    );
+    
+
+
+
 
 app.Run();
